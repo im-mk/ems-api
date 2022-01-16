@@ -1,0 +1,651 @@
+{
+	"info": {
+		"_postman_id": "1f2ee571-dc48-49ae-9af4-8abb7a19832d",
+		"name": "ems",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Holidays",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/holidays?page=1&size=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"holidays"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/holidays/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"holidays",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "99e455f0-b270-4e5b-8543-2da407511e43",
+								"exec": [
+									"var moment = require(\"moment\");",
+									"pm.environment.set('dateRequested', moment().add(14, 'days').toISOString());",
+									"pm.environment.set('dateFrom', moment().add(20, 'days').toISOString());",
+									"pm.environment.set('dateTo', moment().add(25, 'days').toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"requestedById\": \"82bbf531-44a4-495f-b918-499dbdf033f3\",\n    \"dateRequested\": \"{{dateRequested}}\",\n    \"dateFrom\": \"{{dateRequested}}\",\n    \"dateFromPart\": \"am\",\n    \"dateTo\": \"{{dateTo}}\",\n    \"dateToPart\": \"pm\",\n    \"comments\": \"Going to ibiza.\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/holidays",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"holidays"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "99e455f0-b270-4e5b-8543-2da407511e43",
+								"exec": [
+									"var moment = require(\"moment\");",
+									"pm.environment.set('dateRequested', moment().add(14, 'days').toISOString());",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\": 1,\n    \"requestedBy\": \"MK3\",\n    \"dateRequested\": \"{{dateRequested}}\",\n    \"holidayOn\": \"2019-01-01T00:00:00\",\n    \"datePart\": \"pm\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/holidays/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"holidays",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "99e455f0-b270-4e5b-8543-2da407511e43",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/holidays/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"holidays",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Documents",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/documents?page=1&size=3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"documents"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/documents/5fbe888b-4ee0-41e7-b619-af477eb4a609",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"documents",
+								"5fbe888b-4ee0-41e7-b619-af477eb4a609"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Link",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/documents/link/5fbe888b-4ee0-41e7-b619-af477eb4a609",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"documents",
+								"link",
+								"5fbe888b-4ee0-41e7-b619-af477eb4a609"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "99e455f0-b270-4e5b-8543-2da407511e43",
+								"exec": [
+									"var moment = require(\"moment\");",
+									"pm.environment.set('dateRequested', moment().add(14, 'days').toISOString());",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/muhammad.kaleem/Downloads/bamburgh-react-admin-dashboard-reactstrap-free/README.md"
+								},
+								{
+									"key": "title",
+									"value": "title4",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "comment4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/documents",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "99e455f0-b270-4e5b-8543-2da407511e43",
+								"exec": [
+									"var moment = require(\"moment\");",
+									"pm.environment.set('dateRequested', moment().add(14, 'days').toISOString());",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\": 1,\n    \"requestedBy\": \"MK3\",\n    \"dateRequested\": \"{{dateRequested}}\",\n    \"holidayOn\": \"2019-01-01T00:00:00\",\n    \"datePart\": \"pm\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/documents/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"documents",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "99e455f0-b270-4e5b-8543-2da407511e43",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/documents/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"documents",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b3c5c27e-c587-4269-aafe-0331a8be6d3f",
+								"exec": [
+									"const response = pm.response.json();",
+									"pm.environment.set(\"token\", response.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@test.com\",\n    \"password\": \"Pa$$w0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/user/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b3c5c27e-c587-4269-aafe-0331a8be6d3f",
+								"exec": [
+									"const response = pm.response.json();",
+									"pm.environment.set(\"token\", response.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"bob2@test.com\",\n    \"username\": \"bob2\",\n    \"displayName\": \"test\",\n    \"password\": \"bob\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/user/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CurrentUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b3c5c27e-c587-4269-aafe-0331a8be6d3f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Values - Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/values",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"values"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "52b21fe5-e2da-4628-930b-805f7d403ee0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bda96532-e681-41fa-9805-ad253e44fc89",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "f6641525-e189-4013-9ff7-18b8a1cbf492",
+			"key": "url",
+			"value": "http://localhost:5000"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
