@@ -39,7 +39,7 @@ namespace EMS.Api
                     logger.LogError(ex, "An error occured during migration");
                 }
             }
-
+                        
             host.Run();
         }
 

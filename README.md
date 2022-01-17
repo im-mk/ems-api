@@ -6,9 +6,15 @@ This is a dotnet core api...
 
 ### Software/Tools required
 
-Dotnet 5 <https://dotnet.microsoft.com/download>
+Dotnet <https://dotnet.microsoft.com/download>
+
 Docker <https://docs.docker.com/docker-for-windows/install/>
+
+Docker-Compose
+
 Vscode
+
+Postman
 
 Install Dotnet Core entity framekwork tool using the following command to create entity framework migrations:
 
@@ -40,3 +46,18 @@ Start/Stop the api using the following commands.
 `make start-docker`
 
 `make stop-docker`
+
+### Calling the api using postman
+
+First call login endpoint with username and password from seed class which will return bearer token.
+
+Example:
+
+{
+    "email": "test@test.com",
+    "password": "Pa$$w0rd"
+}
+
+Copy the bearer token value to Authorization header
+
+Authorization : Bearer {{token}}
