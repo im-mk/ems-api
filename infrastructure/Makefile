@@ -13,8 +13,21 @@ stop-infra-local:
 ####################################################
 #       Cloud
 
-# Deploy api - ec2
+# Create backend
+.PHONY: init-back
+init-back:
+	cd cloud/backend && terraform init
 
+.PHONY: destory-back
+destroy-back:
+	cd cloud/backend && terraform destroy
+
+.PHONY: deploy-back
+deploy-back:
+	cd cloud/backend && terraform apply
+
+
+# Deploy api
 .PHONY: init-api
 init-api:
 	cd cloud && terraform init
