@@ -26,15 +26,15 @@ dotnet tool install --global dotnet-ef
 - Update aws config with newly created account details.  
 - Create a keypair under EC2 and save it locally.
 - Update pem file permission to secure it. e.g chmod 400 ~/Documents/abc.pem
-- Update infrastructure/cloud/main.tf with key name.  
+- Update infra/cloud/main.tf with key name.  
 - Update Makefile with location. e.g ~/Downloads/abc.pem
-- Deploy terraform backend using make init-back and make init-deploy. See infrastructure/Makefile
-- Deploy infra using make init-api && make deploy-api. See infrastructure/Makefile  
-- To connect to the newly created instance check infrastructure/Makefile connect.  
+- Deploy terraform backend using make init-back and make init-deploy. See infra/Makefile
+- Deploy infra using make init-api && make deploy-api. See infra/Makefile  
+- To connect to the newly created instance check infra/Makefile connect.  
 
 ### Destroy infra
 
-- To delete all the infra destroy api resources and then backend respectively using make destroy-api && make destroy-back. See infrastructure/cloud
+- To delete all the infra destroy api resources and then backend respectively using make destroy-api && make destroy-back. See infra/cloud
 
 ### Run the api
 
