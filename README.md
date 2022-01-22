@@ -20,6 +20,16 @@ Install Dotnet Core entity framekwork tool using the following command to create
 
 dotnet tool install --global dotnet-ef
 
+### Deploy infra to cloud
+
+- Create an aws account.  
+- Create a keypair under EC2 and save it locally.
+- Update pem file permission to secure it. e.g chmod 400 ~/Documents/abc.pem
+- Update infrastructure/cloud/main.tf with key name.  
+- Update Makefile with location. e.g ~/Downloads/abc.pem
+- Use infrastructure/Makefile commands to deploy the infra. e.g make deploy-api  
+- To connect to the newly created instance check infrastructure/Makefile connect.  
+
 ### Run the api
 
 Check the Makefile for a list of all the commands available to run this api.

@@ -1,8 +1,3 @@
-provider "aws" {
-    region = var.region
-    profile = var.profile
-}
-
 resource "aws_vpc" "vpc_ems" {
     cidr_block = "10.1.0.0/16"
     tags = {
@@ -37,7 +32,7 @@ resource "aws_route_table" "rt_ems_api" {
     }
     tags = {
         Name = "rt_ems_api"
-        App = "${var.app_name}"
+        App = var.app_name
     }
 }
 
@@ -69,7 +64,7 @@ resource "aws_network_acl" "allowall" {
 
     tags = {
         Name = "allowall"
-        App = "${var.app_name}"
+        App = var.app_name
     }
 }
 
@@ -111,17 +106,4 @@ resource "aws_eip" "eip_ems" {
     instance = aws_instance.ec2_ems_api.id
     vpc = true
     depends_on = [aws_internet_gateway.ig_ecs_api]
-}
-
-resource "aws_instance" "ec2_ems_api" {
-    ami = var.amazon_linux_ami
-    availability_zone = "eu-west-2a"
-    instance_type = "t2.micro"
-    key_name = var.key
-    vpc_security_group_ids = [aws_security_group.sg_ems_api.id]
-    subnet_id = aws_subnet.sub_ecs_api.id
-    tags = {
-        Name = "ec2-ems-api"
-        App = var.app_name
-    }
 }

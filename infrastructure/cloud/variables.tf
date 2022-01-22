@@ -1,5 +1,5 @@
 variable "profile" {
-    default = "personal"
+    default = "default"
 	description = "e.g. personal"
 }
 
@@ -8,12 +8,17 @@ variable "region" {
 }
 
 variable "key" {
-    default = "aws"
+    default = "ems"
 	description = "Key name"
 }
 
 variable "amazon_linux_ami" {
-    default = "ami-01a6e31ac994bbc09"
+    default = "ami-0fdbd8587b1cf431e"
+}
+
+variable "bucket_name" {
+    default =   "ems-data-bucket"
+	description = "e.g. your-bucket-name"
 }
 
 variable "app_name" {
