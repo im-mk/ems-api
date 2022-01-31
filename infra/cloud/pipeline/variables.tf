@@ -1,5 +1,5 @@
 variable "profile" {
-    default = "personal"
+    default = "default"
 	description = "e.g. personal"
 }
 
@@ -16,5 +16,5 @@ variable "github_organisation" {
 }
 
 variable "github_repository" {
-    default = "ems"
+    default = "ems-api"
 }
