@@ -48,8 +48,8 @@ watch:
 # Start aws service locally using localstack
 .PHONY: start-infra-local
 start-infra-local:
-	cd infra && make start-infra-local
+	cd ./../infra && make start-infra-local
 
 .PHONY: stop-infra-local
 stop-infra-local:
-	cd infra && make stop-infra-local
+	cd ./../infra && make stop-infra-local

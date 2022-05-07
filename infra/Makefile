@@ -3,11 +3,11 @@
 
 .PHONY: start-infra-local
 start-infra-local:
-	cd Local && docker-compose up -d --build
+	cd local && docker-compose up -d --build
 
 .PHONY: stop-infra-local
 stop-infra-local:
-	cd Local && docker-compose down -v
+	cd local && docker-compose down -v
 
 
 ####################################################
