@@ -18,7 +18,7 @@ stop-infra-local:
 init-back:
 	cd cloud/backend && terraform init
 
-.PHONY: destory-back
+.PHONY: destroy-back
 destroy-back:
 	cd cloud/backend && terraform destroy
 
@@ -30,19 +30,19 @@ deploy-back:
 # Deploy api
 .PHONY: init-api
 init-api:
-	cd cloud && terraform init
+	cd cloud/app && terraform init
 
-.PHONY: destory-api
+.PHONY: destroy-api
 destroy-api:
-	cd cloud && terraform destroy
+	cd cloud/app && terraform destroy
 
 .PHONY: plan-api
 plan-api:
-	cd cloud && terraform plan
+	cd cloud/app && terraform plan
 
 .PHONY: deploy-api
 deploy-api:
-	cd cloud && terraform apply
+	cd cloud/app && terraform apply
 
 .PHONY: connect
 connect:
