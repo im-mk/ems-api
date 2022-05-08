@@ -16,8 +16,7 @@ resource "aws_internet_gateway" "ig_ecs_api" {
 
 resource "aws_subnet" "sub_ecs_api" {
     vpc_id = aws_vpc.vpc_ems.id
-    cidr_block = "10.1.1.0/24"
-    availability_zone = var.region
+    cidr_block = "10.1.1.0/24"    
     tags = {
         Name = "sub-ecs-api-a"
         App = var.app_name

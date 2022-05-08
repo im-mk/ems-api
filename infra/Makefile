@@ -26,6 +26,22 @@ destroy-back:
 deploy-back:
 	cd cloud/backend && terraform apply
 
+# Create pipeline
+.PHONY: init-pipe
+init-pipe:
+	cd cloud/pipeline && terraform init
+
+.PHONY: plan-pipe
+plan-pipe:
+	cd cloud/pipeline && terraform plan
+
+.PHONY: deploy-pipe
+deploy-pipe:
+	cd cloud/pipeline && terraform apply
+
+.PHONY: destroy-pipe
+destroy-pipe:
+	cd cloud/pipeline && terraform destroy
 
 # Deploy api
 .PHONY: init-api

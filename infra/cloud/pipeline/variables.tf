@@ -18,3 +18,7 @@ variable "github_organisation" {
 variable "github_repository" {
     default = "ems-api"
 }
+
+variable "github_branch" {
+    default = "master"
+}

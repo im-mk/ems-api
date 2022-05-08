@@ -1,6 +1,5 @@
 resource "aws_instance" "ec2_ems_api" {
     ami = var.amazon_linux_ami
-    availability_zone = var.region
     instance_type = "t2.micro"
     key_name = var.key
     vpc_security_group_ids = [aws_security_group.sg_ems_api.id]
